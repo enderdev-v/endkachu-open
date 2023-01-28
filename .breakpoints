@@ -11,17 +11,17 @@
     "index.js": [
       {
         "id": "6f5dafec-9410-4d4e-948b-35a9a631972f",
-        "line": 33,
-        "version": 232,
-        "index": 834
+        "line": 6,
+        "version": 1003,
+        "index": 257
       }
     ],
     "package.json": [
       {
         "id": "63f4a852-8597-4646-8fe6-a28d9ae9281e",
         "line": 36,
-        "version": 175,
-        "index": 861
+        "version": 232,
+        "index": 858
       }
     ]
   }

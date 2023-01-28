@@ -14,6 +14,7 @@ module.exports = {
       .sort((a, b) => b.position - a.position)
       .map(roles => roles.toString())
       .slice(0, -1)
+      let banner = usuario.banner ? usuario.bannerURL() : usuario.hexAccentColor;
 
     let displayRoles;
 
@@ -26,6 +27,7 @@ module.exports = {
       .setTitle(`informacion de ${usuario.user.username}`)
       .setThumbnail(usuario.user.displayAvatarURL({ format: `png` }))
       .setColor(0x028384)
+      .setImage(banner)
       .addFields(
         {
           name: `Tag`,

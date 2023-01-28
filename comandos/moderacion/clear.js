@@ -12,7 +12,7 @@ module.exports = {
     const cantidad = args[0];
     if(!cantidad) return message.reply("escribe una cantidad")
     if(isNaN(cantidad) || parseInt(cantidad <= 0)) return message.reply(`esa cantidad es 0 y tiene que ser mayor a 0`)
-    if(parseInt(cantidad) > 100) return message.reply(`esa cantidad excede mis limites`)
+    if(parseInt(cantidad) >= 100) return message.reply(`esa cantidad excede mis limites`)
     if(isNaN(cantidad)) return message.reply("escribe una cantidad  en numeros")
 
   

@@ -49,7 +49,7 @@ module.exports = {
         },
         {
           name: "**Librerias:**",
-          value: `> Discord.js **v13.7.0** \n > MongoDB **6.2.10** \n > Distube **v3.3.1-1**`,
+          value: `> Discord.js **v14.6.0** \n > MongoDB **6.7.3** `,
           inline: true
         },
         {
@@ -66,14 +66,14 @@ module.exports = {
             .setStyle(ButtonStyle.Link)
             .setLabel("Soporte")
             .setURL("https://discord.gg/PHNGpjh4jc")
-            .setEmoji("936799216360112218")
+            .setEmoji("1044251490677690441")
         ],
         [
           new Discord.ButtonBuilder()
             .setStyle(ButtonStyle.Link)
             .setLabel("Web")
-            .setURL("https://endkachu-webendercrackyt.repl.co/")
-            .setEmoji("935969326446551120")
+            .setURL("https://endkachu-web.endercrackyt.repl.co/")
+            .setEmoji("1044251559988563978")
         ]
       )
 

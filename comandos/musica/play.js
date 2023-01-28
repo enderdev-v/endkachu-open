@@ -9,7 +9,7 @@ module.exports = {
   botPerms: [],
 
   async run(client, message, args){
-
+  /*
 		let cancion = args.join(` `)
     if(!cancion) return message.reply(`debes poner una cancion`)
     if(!message.member.voice.channel) return message.reply(`Debes estar en un canal de voz`)
@@ -25,15 +25,15 @@ module.exports = {
         member: message.member
       }
     );
-
+   */
 		
-    message.reply({ embeds: [{ color: 0x00ae9f, description: `Reproduciendo cancion...`}] })
+    message.reply({ embeds: [{ color: 0x00ae9f, description: `Comando en mantenimiento`}] })
  
 
    
-    } catch (error) {
-      console.log(error)
-    }
+   // } catch (error) {
+    //  console.log(error)
+  //  }
     }
   
 }

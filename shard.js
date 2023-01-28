@@ -1,6 +1,6 @@
- const { ShardingManager } = require("discord.js");
-
-const mySecret = process.env['token']
+const { ShardingManager } = require("discord.js");
+const chalk = require("chalk")
+const mySecret = process.env.token
 
 let manager = new ShardingManager('./index.js', {
   token: mySecret,
@@ -11,7 +11,7 @@ let manager = new ShardingManager('./index.js', {
 // Emitted when a shard is created
 manager.once("shardCreate", async (shard) => {
 
-  console.log(`Shards: ${shard.id} lanzada`)
+  console.log(chalk.bold.cyan`Shards: ` + chalk.italic.green`${shard.id} lanzada`)
 
   shard.on('error', (error) => {
      console.error(error) 

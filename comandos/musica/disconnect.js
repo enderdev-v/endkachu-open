@@ -8,7 +8,7 @@ module.exports = {
   botPerms: [],
 
   async run(client, message, args){
-
+/*
 		const queue = client.distube.getQueue(message)
 
 		if(!queue) return message.reply(`no hay una cancion en espera`)
@@ -17,8 +17,8 @@ module.exports = {
     if(message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.reply({ content: `Debes estar en el mismo canal de voz que yo`})
 
          client.distube.stop(message)
-
-    message.channel.send(`Desconectado exitosamente`)
+*/
+    message.channel.send(`acertaste este tambien esta en mantenimiento`)
 
 
   }

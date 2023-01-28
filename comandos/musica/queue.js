@@ -8,7 +8,7 @@ module.exports = {
   botPerms: [],
 
   async run(client, message, args){
-
+/*
 		const queue = client.distube.getQueue(message)
 
     if(!queue) return message.reply(`no hay una cancion en espera`)
@@ -22,8 +22,8 @@ module.exports = {
 		.setDescription(queue.songs.map((song, id) => `**${id + 1}**.${song.name} |\`${song.formattedDuration}\``).slice(0, 10).join("\n"))
 
 		message.channel.send({ embeds: [embed] })
-
-
+*/
+message.channel.send("también esta en mantenimiento")
   }
   
 }

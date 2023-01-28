@@ -1,5 +1,5 @@
 const { ChannelType } = require(`discord.js`);
-const channelSchema = require(`../../Schemas/channelSchema`)
+const suggestSchema = require(`../../Schemas/suggestSchema`)
 
 module.exports = {
   name: "suggest-channel",
@@ -11,18 +11,20 @@ module.exports = {
   async run(client, message, args){
 
    let canal = message.mentions.channels.first()
-		if(!canal || canal.type !== ChannelType.GuildText) return message.reply(`el canal de sugerencias no es valido`);
-
-    let data = await channelSchema.findOne({ guildId: message.guild.id }) 
+		if(!canal || canal.type === ChannelType.GuildStageVoice || canal.type === ChannelType.GuildVoice ) {
+      return message.reply({ embeds: [{ title: "Canal no valido", description: `Ese canal no es válido o no existe en este servidor` , color: 0xbc0000 }] });
+    }
+    
+    let data = await suggestSchema.findOne({ guildId: message.guild.id }) 
 
     if(!data) {
-		let newdata = new channelSchema({
+		let newdata = new suggestSchema({
 			channelId: canal.id,
 			guildId: message.guild.id
 		})
 		return await newdata.save()
 	}
-	await channelSchema.findOneAndUpdate({
+	await suggestSchema.findOneAndUpdate({
 		  channelId: canal.id,
 			guildId: message.guild.id
 	})

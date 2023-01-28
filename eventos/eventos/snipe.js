@@ -1,8 +1,9 @@
+const snipe = require(`../../Schemas/snipeSchema`)
+
 module.exports = {
 	name: `messageDelete`,
 	async run(client, message) {
-		const snipe = require(`../Schemas/snipeSchema`)
-
+		
   let data = await snipe.findOne({ channelId: message.channel.id }) 
 
 	if(!data) {

@@ -4,7 +4,7 @@ const prefixSchema = require(`../../Schemas/prefixSchema`)
 module.exports = {
   name: "setprefix",
   alias: [],
-  	description: `Comando para cambiar el prefix`,
+  description: `Comando para cambiar el prefix`,
   userPerms: [`ManageGuild`],
   botPerms: [`ManageGuild`],
 

@@ -8,7 +8,7 @@ module.exports = {
   botPerms: [],
 
   async run(client, message, args){
-
+    /*
 		if(!message.member.voice.channel) return message.reply({ content: `Debes estar en un canal de voz`})
     if(message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.reply({ content: `Debes estar en el mismo canal de voz que yo`})
 
@@ -18,11 +18,13 @@ module.exports = {
     if(!queue) return message.reply(`no hay una cancion en espera`)
 
     try {
+      
       await client.distube.pause(message.member.voice.channel)
-      message.reply(`La cancion ha sido pausada correctamente`)
-    } catch(e) {
-      console.error(e)
-    }
+      */
+      message.reply(`Comando en mantenimiento`)
+  //  } catch(e) {
+    //  console.error(e)
+  //  }
 
   }
   

@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require(`discord.js`);
-
+const embedSchema = require("../../Schemas/embedSchema")
 module.exports = {
   name: "sayembed",
   alias: [],
@@ -9,8 +9,12 @@ module.exports = {
 
   async run(client, message, args) {
 
-    let texto = args.slice(1).join(" ")
+    let data = await embedSchema.findOne({ guild: message.guild.id })
 
+    let texto = args.slice(2).join(" ")
+
+    let color = (!data?.color) ? 0x050cd9 :  parseInt(data?.color)
+    let footer = (!data?.footer) ? `Anunció de ${message.guild.name}` : data.footer 
 
     if (!texto) return message.channel.send("que escribo en el anuncio")
 
@@ -20,10 +24,10 @@ module.exports = {
 
 
 
-    let embed = new Discord.EmbedBuilder()
+    let embed = new EmbedBuilder()
       .setTitle(title)
       .setThumbnail(message.guild.iconURL())
-      .setColor(0x050cd9)
+      .setColor(color)
       .addFields(
         {
           name: "Anuncio:",
@@ -31,12 +35,10 @@ module.exports = {
           inline: false
         }
       )
-      .setFooter({ text: `Anuncio de ${message.guild.name}` });
-
-    message.delete()
-
-    message.channel.send({ embeds: [embed] })
-
+      .setFooter({ text: footer })
+  
+     if (!data?.msg) return message.channel.send({ embeds: [embed] })
+     else return message.channel.send({ content: data.msg, embeds: [embed]})
   }
 
 }

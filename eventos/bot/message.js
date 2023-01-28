@@ -1,25 +1,23 @@
-const { EmbedBuilder, PermissionsBitField } = require(`discord.js`)
-const config = require(`../utility/config.json`)
-const prefixSchema = require(`../Schemas/prefixSchema`)   
-    
+const { EmbedBuilder, PermissionsBitField, ChannelType } = require(`discord.js`)
+const prefixSchema = require(`../../Schemas/prefixSchema`)
+const config = require("../../utility/config.json")
+
 module.exports = {
 	name: `messageCreate`,
 	async run(client, message){
 
-    let data = await prefixSchema.findOne({ guildId: message.guild.id })
+    let data = await prefixSchema.findOne({ guildId: message.guild.id})
 		
-		
-  if(message.channel.type === `dm`) return;
+  if(message.channel.type === ChannelType.Dm) return;
  if(message.author.bot) return;
 
   let prefix;
-
-    if (data === null) {
-      prefix = `${config.prefix}`
-    } else {
-      prefix = data.prefix
-    }
-
+     if (!data || !data.prefix) { 
+     prefix = config.prefix 
+   } else { 
+    prefix = data.prefix;
+   } 
+    
   if(!message.content.startsWith(prefix)) return;
 
   let usuario = message.mentions.members.first() || message.member;

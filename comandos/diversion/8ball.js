@@ -25,7 +25,7 @@ module.exports = {
 ]
   let Aleatorio = Math.floor(Math.random()*(Ball.length));
 
-    const embed = new Discord.MessageEmbed()
+    const embed = new Discord.EmbedBuilder()
     .setTitle("8Ball Question")
     .setDescription("Pregunta: \n " + question )
     .addFields(

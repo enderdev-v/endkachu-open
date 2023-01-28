@@ -10,7 +10,7 @@ module.exports = {
 
   async run(client, message, args) {
 
-    let nivel = { "Low": "Bajo", "None": "Ninguno", "Medium": "Medio", "High": "Alto", "Very_high": "Muy alto" }
+    let nivel = { "0": "Ningúno", "1": "Bajo", "2": "Medio", "3": "Alto", "4": "Muy alto" }
     let bots = message.guild.members.cache.filter(member => member.user.bot).size;
     let usuarios = message.guild.members.cache.filter(member => !member.user.bot).size;
     let very = nivel[message.guild.verificationLevel]

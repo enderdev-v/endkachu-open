@@ -1,10 +1,10 @@
 const Discord = require(`discord.js`);
-const { prefix } = require(`../../utility/funciones.js`)
+
 module.exports = {
   name: "help",
   alias: [],
 	description: `muestra los comandos del bot`,
-  usage: `${prefix()}help [comando]`,
+  usage: `help [comando]`,
   userPerms: [],
   botPerms: [],
 
@@ -96,8 +96,8 @@ module.exports = {
     .setDescription(`Comandos que te seran utiles en el servidor`)
     .addFields({
       name: `◦•≫ Comandos`,
-      value: "sayembed  \n serverinfo \n  userinfo \n suggest \n avatar \n servericon \n calc",
-      inline: "false"
+      value: "sayembed  \n serverinfo \n  userinfo \n suggest \n avatar \n servericon \n calc \n revive-chat",
+      inline: false
     })
     
     
@@ -107,7 +107,7 @@ module.exports = {
     .setDescription(`Comandos que ayudan a que configuran y adaptan al bot a tus necesidades`)
     .addFields({
       name: `◦•≫ Comandos`,
-      value: "set-auditlogs \n  set-prefix \n set-leaves \n  \n suggest-channel  \n set-welcome",
+      value: "setboost \n  set-prefix \n setleaves \n setrevive \n sayconfig \n embedmsg \n suggest-channel  \n setwelcome",
       inline: false
     })
     
@@ -117,7 +117,7 @@ module.exports = {
     .setDescription(`Comandos que te divertiran y alegraran tu servidor`)
     .addFields({
       name: `◦•≫ Comandos`,
-      value: "jumbo \n 8ball \n playgame \n game \n random \n say \n randomcolor",
+      value: "jumbo \n 8ball \n playgame \n game \n random \n say \n randomcolor \n create-meme \n achievement",
       inline: false
       })
     

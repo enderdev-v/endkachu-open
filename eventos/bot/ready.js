@@ -1,5 +1,5 @@
 const { ActivityType } = require("discord.js")
-
+const chalk = require("chalk")
 module.exports = {
 	name: `ready`,
 	run (client) {
@@ -14,6 +14,6 @@ module.exports = {
      } 
      presence() 
   
-		console.log(`endkachu ready`)
+		console.log(chalk.bold.cyan`endkachu ready`)
 	}
 }

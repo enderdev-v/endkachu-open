@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require(`discord.js`);
-const channelSchema = require(`../../Schemas/channelSchema`)
+const suggestSchema = require(`../../Schemas/suggestSchema`)
 
 module.exports = {
   name: "suggest",
@@ -13,7 +13,7 @@ module.exports = {
 		let suggest = args.join(` `)
 		if(!suggest) return message.reply(`no pusiste la sugerencia`)
 
-		let canal = await channelSchema.findOne({ guildId: message.guild.id })
+		let canal = await suggestSchema.findOne({ guildId: message.guild.id })
 
     if (!canal ||  !canal.channelId || !message.guild.channels.cache.get(canal.channelId)) return message.channel.send(`no se establecio un canal o no existe`)
     
