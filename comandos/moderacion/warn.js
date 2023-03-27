@@ -1,4 +1,4 @@
-const Discord = require(`discord.js`);
+const { EmbedBuilder } = require(`discord.js`);
 const warnSchema = require(`../../Schemas/warnSchema`)
 const { asegurado } = require(`../../utility/funciones`)
 
@@ -6,8 +6,8 @@ module.exports = {
   name: "warn",
   alias: [],
 	description: `le da una advertencia al usuario \n usa !warn {usuario} {razon}`,
-  userPerms: [`ManageMembers`],
-  botPerms: [`ManageMembers`],
+  userPerms: [`Administrator`],
+  botPerms: [`Administrator`],
 
   async run(client, message, args){
 
@@ -18,13 +18,13 @@ module.exports = {
 
    if(user === message.author) return  message.reply("no te puedes dar un warn a ti mismo") 
 
-     await asegurado(user.id, message.guild.id)
+     await asegurado(warnSchema, user.id, message.guild.id)
           
 		
 		let razon = args.join(` `).slice(22)
 
     if (!razon) return message.reply(`¿cual es la razon?`)
-    let embed = new Discord.MessageEmbed()
+    let embed = new EmbedBuilder()
 		.setDescription(`**Warn a ${user}** \n\ ${razon}`)
 		.setColor(`Red`)
 

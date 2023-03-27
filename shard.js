@@ -1,38 +1,19 @@
-const { ShardingManager } = require("discord.js");
-const chalk = require("chalk")
-const mySecret = process.env.token
-
-let manager = new ShardingManager('./index.js', {
-  token: mySecret,
-  totalShard: "auto",
-  respawn: true,
-})
-
-// Emitted when a shard is created
-manager.once("shardCreate", async (shard) => {
-
-  console.log(chalk.bold.cyan`Shards: ` + chalk.italic.green`${shard.id} lanzada`)
-
-  shard.on('error', (error) => {
-     console.error(error) 
-  });
-  shard.on('disconnect', (a, b) => {
-        console.log('Shard disconnected')
-        console.log(a)
-        console.log(b)
-    })
-    shard.on('reconnecting', (a, b) => {
-        console.log('Shard reconnecting')
-        console.log(a)
-        console.log(b)
-    })
-    shard.on('death', (a, b) => {
-        console.log('Shard died')
-        console.log(a)
-        console.log(b)
-    })
-  
+const { ShardingManager } = require('discord.js');
+const chalk = require('chalk');
+const shards = new ShardingManager('./index.js', {
+	token: process.env.token,
+	totalShards: 1
 });
-
-// Spawn your shards
-manager.spawn({ amount: 'auto', delay: 15500, timeout: 60000 }).catch(e => console.log(e))
+shards.on('shardCreate', shard =>
+	console.log(
+		chalk.bold.green`Shards ━━━━━━━━━━━┓ \n`,
+		chalk.bold.green`║ \n`,
+		chalk.bold.green`║`,
+		chalk.bold.white`Shard ${shard.id} Lanzada \n`,
+		chalk.bold.green`║`,
+		chalk.bold.white`${String(new Date().toLocaleString())} \n`,
+		chalk.bold.green`║\n`,
+		chalk.green`┗━━━━━━━━━━━━━━━┛`
+	)
+);
+shards.spawn({ amount: shards.totalShards, delay: 5500, timeout: 30000 });

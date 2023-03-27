@@ -6,7 +6,9 @@ const reviveSchema = require("../../Schemas/reviveSchema")
 const warnSchema = require("../../Schemas/warnSchema")
 const prefixSchema = require("../../Schemas/prefixSchema")
 const welcomeSchema = require("../../Schemas/welcomeSchema")
-
+const noteSchema = require("../../Schemas/noteSchema")
+// const ssugsSchema = require("../../ssugsSchema")
+const saySchema = require("../../Schemas/saySchema")
 
 module.exports = {
   name: "guildDelete",
@@ -19,8 +21,11 @@ module.exports = {
     await suggestSchema.findOneAndDelete({ guildId: guild.id })
     await prefixSchema.findOneAndDelete({ guildId: guild.id })
     await snipeSchema.findOneAndDelete({ guildId: guild.id })
-    // await embedSchema.findOneAndDelete({ guildID: guild.id })
+   // await embedSchema.findOneAndDelete({ guildID: guild.id })
     await welcomeSchema.findOneAndDelete({ guild: guild.id })
+    await noteSchema.findOneAndDelete({ guild: guild.id })
+   // await ssugsSchema.findOneAndDelete({ guild: guild.id })
+    await saySchema.findOneAndDelete({ guild: guild.id })
     
       }
 }

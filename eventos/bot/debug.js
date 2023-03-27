@@ -1,6 +1,6 @@
+const chalk = require('chalk');
+
 module.exports = {
-  name: "debug",
-  async run(e, client) {
-   // console.log("Hubo un debug")
-  }
-}
+	name: 'debug',
+	async run(e, client) {}
+};

@@ -1,57 +1,72 @@
-const Discord = require(`discord.js`);
+const {
+	SlashCommandBuilder,
+	EmbedBuilder,
+	ActionRowBuilder,
+	SelectMenuBuilder
+} = require(`discord.js`);
 
 module.exports = {
-	name: 'help',
-	alias: [],
-	description: `muestra los comandos del bot`,
-	usage: `help [comando]`,
-	userPerms: [],
-	botPerms: [],
+	data: new SlashCommandBuilder()
+		.setName('help')
+		.setDescription(`Muestra una lista de mis comandos`)
+		.addStringOption(option =>
+			option
+				.setName(`comando`)
+				.setDescription(`Ayuda específica de un comando mio`)
+		),
 
-	async run(client, message, args) {
-		if (args[0]) {
-			let cmd = client.commands.get(args[0]);
+	async run(client, int) {
+		let comando = int.options.getString(`comando`);
+		if (comando) {
+			let cmd = client.commands.get(comando);
 
 			if (!cmd) {
-				return message.channel.send('no se encontro el comando');
+				return int.reply('no se encontro el comando');
 			} else if (cmd) {
-				let desc = cmd.description
+				let description = cmd.description
 					? cmd.description
 					: 'No hay descripción del comando.';
 				let aliases = cmd.aliases
 					? cmd.aliases.join(', ')
 					: 'No hay aliases del comando.';
-				let botP = cmd.botPerms ? cmd.botPerms.join(', ') : 'No hay permisos requeridos.';
-				let userP = cmd.userPerms ? cmd.userPerms.join(', ') : 'No hay permisos requeridos para el bot.';
-				let uso = cmd.usage
-					? cmd.usage.join(' ')
-					: 'No se proporciono el uso del comando';
+				let botPerms = cmd.botPerms
+					? cmd.botPerms.join(', ')
+					: 'No hay permisos requeridos.';
+				let userPerms = cmd.userPerms
+					? cmd.userPerms.join(', ')
+					: 'No hay permisos requeridos para el bot.';
+				//let uso = cmd.usage
+				//? cmd.usage.join(', ')
+				//	: 'No se proporciono el uso del comando';
 
 				let helpcmd = {
 					title: `ayuda del comando **${cmd.name}**`,
-					description: `**Descripción del comando** \n ${desc}`,
 					fields: [
 						{
 							name: `alias`,
 							value: `${aliases}`
 						},
 						{
+							name: `Descripción`,
+							value: `${description}`
+						},
+						{
 							name: `Permisos del bot`,
-							value: `${botP}`
+							value: `${botPerms}`
 						},
 						{
 							name: `Permisos del usuario`,
-							value: `${userP}`
+							value: `${userPerms}`
 						}
 					],
 					color: 0x01a0a1,
 					footer: { text: ` [] opcional, {} requerido` }
 				};
-				return message.channel.send({ embeds: [helpcmd] });
+				return int.reply({ embeds: [helpcmd] });
 			}
 		}
 
-		let embed = new Discord.EmbedBuilder()
+		let embed = new EmbedBuilder()
 			.setTitle('✨ Hola soy  endkachu✨')
 			.setColor(0x01a0a1)
 			.setDescription(
@@ -60,12 +75,12 @@ module.exports = {
 			.addFields({
 				name: '◦•≫ Categorias',
 				value:
-					'<:interesante:1044261055280463882> Generales \n <:queno:1044253989803397120> Moderación \n <:oye:1044251559988563978> Utilidad  \n <:wow:1044251815258099722> Configuracion \n <:divertido:1044251730889670787> Diversion \n<:epico:1044261418427502643> Notas \n <:interesante:963559201584607373> Musica',
+					'<:epico:1044261418427502643> Generales \n <:queno:1044253989803397120> Moderación \n <:oye:1044251559988563978> Utilidad  \n <:wow:1044251815258099722> Configuracion \n  <:divertido:1044251730889670787> Diversion \n<:epico:1044261418427502643> Notas \n <:interesante:963559201584607373> Musica',
 				inline: false
 			});
 
-		let row = new Discord.ActionRowBuilder().addComponents(
-			new Discord.SelectMenuBuilder()
+		let row = new ActionRowBuilder().addComponents(
+			new SelectMenuBuilder()
 				.setCustomId('menu')
 				.setMaxValues(1)
 				.setPlaceholder('⚡ Seleccion de Categorias ')
@@ -74,7 +89,7 @@ module.exports = {
 						label: 'Generales',
 						description: 'comandos de información',
 						value: 'general',
-						emoji: '1044261055280463882'
+						emoji: '1044261418427502643'
 					},
 					{
 						label: 'Moderación',
@@ -114,7 +129,7 @@ module.exports = {
 					}
 				])
 		);
-		const m = await message.channel.send({
+		const i = await int.reply({
 			embeds: [embed],
 			components: [row]
 		});

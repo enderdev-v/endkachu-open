@@ -11,8 +11,4 @@ const express = require('express')()
 	.get('/', (req, res) => res.send('endkachu listo'))
 	.listen(3000);
 
-// Lavalink
-
 client.login(process.env.token);
-
-console.log(chalk.bold.cyan`Iniciado con node ${process.version}`);

@@ -8,7 +8,7 @@ module.exports = {
   botPerms: [],
   async run(client, message, args){
     
-    message.reply({ embeds: [{ title: "Ping", description: `\<:interesante:963559201584607373> Pong! ${client.ws.ping}ms`, color: 0xFFFFF}]})
+    message.reply({ embeds: [{ title: "Ping", description: `\<:interesante:963559201584607373> Pong! ${client.ws.ping}ms`, color: 0xFFFFF }]})
 
   }
   

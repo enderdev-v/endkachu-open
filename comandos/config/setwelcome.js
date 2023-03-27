@@ -8,7 +8,9 @@ module.exports = {
 
 	async run(client, message, args) {
 		let option = args[0];
-
+    let canal = message.mentions.channels.first();
+	  let msg = args.slice(1).join(' ');
+		 
 		if (!option)
 			return message.reply({
 				embeds: [
@@ -21,8 +23,7 @@ module.exports = {
 			});
 		switch (option) {
 			case 'channel':
-				let canal = message.mentions.channels.first();
-				if (!canal || canal.type !== ChannelType.GuildText)
+					if (!canal || canal.type !== ChannelType.GuildText)
 					return message.reply({
 						embeds: [
 							{
@@ -59,8 +60,7 @@ module.exports = {
 
 				break;
 			case 'message':
-				let msg = args.slice(1).join(' ');
-				message.channel.send(msg);
+						message.channel.send(msg);
 				break;
 			default:
 				message.reply({

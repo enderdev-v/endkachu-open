@@ -11,7 +11,7 @@ module.exports = {
 
     let data = await embedSchema.findOne({ guild: message.guild.id })
 
-    let texto = args.slice(2).join(" ")
+    let texto = args.slice(1).join(" ")
 
     let color = (!data?.color) ? 0x050cd9 :  parseInt(data?.color)
     let footer = (!data?.footer) ? `Anunció de ${message.guild.name}` : data.footer 

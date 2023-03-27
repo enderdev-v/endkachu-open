@@ -1,14 +1,15 @@
-const { Schema, model } = require(`mongoose`)
+const { Schema, model } = require(`mongoose`);
 
 const note = new Schema({
-  notes: {
-    type: Array,
-    required: true
-  },
-  fast: {
-    type: String,
-    required: true
-  },
+	notes: {
+		type: Array,
+		required: true,
+		default: []
+	},
+	fastnotes: {
+		type: String,
+		required: false
+	},
 	guild: {
 		type: String,
 		required: true
@@ -16,7 +17,11 @@ const note = new Schema({
 	user: {
 		type: String,
 		required: true
+	},
+	perms: {
+		type: String,
+		required: false
 	}
-})
+});
 
-module.exports = model(`noteSchema`, note)
+module.exports = model(`noteSchema`, note);

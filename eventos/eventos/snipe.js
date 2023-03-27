@@ -1,9 +1,9 @@
 const snipe = require(`../../Schemas/snipeSchema`)
-
+const { ChannelType } = require("discord.js")
 module.exports = {
 	name: `messageDelete`,
 	async run(client, message) {
-		
+		if (message.channel.type === ChannelType.GuildForum) return;
   let data = await snipe.findOne({ channelId: message.channel.id }) 
 
 	if(!data) {
