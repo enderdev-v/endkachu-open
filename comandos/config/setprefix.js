@@ -13,14 +13,13 @@ module.exports = {
 
 		if (!prefix) return message.reply(`No Pusiste el prefix`);
 
-		let data = await prefixSchema.findOne({ guildId: message.guild.id });
-
+		
 		await prefixSchema.findOneAndUpdate(
 			{ guildId: message.guild.id },
 			{ prefix: prefix, guildId: message.guild.id },
 			{ new: true, upsert: true }
 		);
-
-		message.reply(`Prefix Cambiado a ${prefix}`);
+     message.reply({ embeds: [{ title: `Cambio de Prefix`, description: `el prefix a sido cambiado a ${prefix} `, color: 0x3f7ede }], ephemeral: true });
+ 
 	}
 };

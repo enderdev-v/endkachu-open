@@ -24,7 +24,7 @@ module.exports = {
     let embed = new EmbedBuilder()
       .setTitle(`informacion de ${message.guild.name}`)
       .setThumbnail(message.guild.iconURL())
-      .setColor(0x06aed5)
+      .setColor(0x3f7ede)
       .addFields(
         {
           name: `**Owner:**`,

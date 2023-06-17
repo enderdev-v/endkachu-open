@@ -16,7 +16,7 @@ module.exports = {
 				embeds: [
 					{
 						title: 'Error',
-						color: 0xbc0000,
+						color: 0xe14e2c,
 						description: `no pusiste una opción \n opciones: rol, channel`
 					}
 				]
@@ -29,6 +29,7 @@ module.exports = {
 					return message.reply({
 						embeds: [
 							{
+								color: 0xe14e2c,
 								title: 'Hubo un error',
 								description: 'no se encuentra o no mencionaste el rol'
 							}
@@ -52,7 +53,7 @@ module.exports = {
 						{
 							title: `Rol establecido`,
 							description: `<:check:963554878200901692> Rol:  ${role} establecido correctamente`,
-							color: 0x00c800
+							color: 0x297020
 						}
 					]
 				});
@@ -70,7 +71,7 @@ module.exports = {
 							{
 								title: 'Canal no valido',
 								description: `Ese canal no es válido o no existe en este servidor`,
-								color: 0xbc0000
+								color: 0xe14e2c
 							}
 						]
 					});
@@ -95,7 +96,7 @@ module.exports = {
 						{
 							title: `canal establecido`,
 							description: `<:check:963554878200901692> Canal ${canal} establecido correctamente`,
-							color: 0x00c800
+							color: 0x297020
 						}
 					]
 				});
@@ -106,7 +107,7 @@ module.exports = {
 					embeds: [
 						{
 							title: 'Error',
-							color: 0xbc0000,
+							color: 0xe14e2c,
 							description: `${option} no es una opción valida \n opciones: channel, message`
 						}
 					]

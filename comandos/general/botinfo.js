@@ -17,7 +17,7 @@ module.exports = {
 		let embed = new Discord.EmbedBuilder()
 			.setTitle('**Informacion de endkachu**')
 			.setThumbnail(client.user.displayAvatarURL())
-			.setColor(0x00f3b5)
+			.setColor(0x3f7ede)
 			.setDescription(
 				'hola soy endkachu es un bot de multifunción que viene a alegrar tu servidor'
 			)
@@ -75,7 +75,7 @@ module.exports = {
 			new Discord.ButtonBuilder()
 				.setStyle(ButtonStyle.Link)
 				.setLabel('Web')
-				.setURL('https://endkachu-web.endercrackyt.repl.co/')
+				.setURL('https://endkachu-web.enderdev-v.repl.co/')
 				.setEmoji('1044251559988563978')
 		]);
 

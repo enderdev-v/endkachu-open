@@ -51,7 +51,7 @@ module.exports = {
 			title: `Nueva sugerencia`,
 			thumbnail: { url: `${message.author.displayAvatarURL()}` },
 			description: suggest,
-			color: 0x00b5be,
+			color: 0x3f7ede,
 			fields: [
 				{
 					name: 'Votos Positivos 0%',

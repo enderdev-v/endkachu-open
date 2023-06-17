@@ -56,6 +56,8 @@ module.exports = {
 				return message.reply(`no tengo el permiso ${cmd.botPerms || []}`);
 		}
 
+		
+
 		if (cmd) {
 			cmd.run(client, message, args);
 		}

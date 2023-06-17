@@ -5,11 +5,11 @@ module.exports = {
 	async run(client, message) {
 		if (message.channel.type === ChannelType.GuildForum) return;
   let data = await snipe.findOne({ channelId: message.channel.id }) 
-
+  let msg = message.embeds.length > 0 ? `El mensaje era un embed` : message.content
 	if(!data) {
 		let newdata = new snipe({
 			channelId: message.channel.id,
-			message: message.content,
+			message: msg,
 			author: message.author.tag,
       time: Math.round(Date.now() / 1000)
 		})
@@ -17,7 +17,7 @@ module.exports = {
 	}
 	await snipe.findOneAndUpdate({
 		  channelId: message.channel.id,
-			message: message.content,
+			message: msg,
 			author: message.author.tag,
       time: Math.round(Date.now() / 1000)
 	})

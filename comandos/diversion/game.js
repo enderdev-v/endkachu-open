@@ -33,7 +33,7 @@ module.exports = {
         inline: false
       }
     )
-      .setColor(`BLUE`);
+      .setColor(0x3f7ede);
 
     message.channel.send({ embeds: [embed] })
     

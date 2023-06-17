@@ -33,7 +33,7 @@ module.exports = {
 					title: `<:pat:963560169273458839> Invitame :D`,
 					description:
 						'<:yeah:930915658030522428> Quieres invitarme? aqui tienes 2 opciones :D',
-					color: 0xfffff,
+					color: 0x3f7ede,
 				//	thumbnail: `${client.user.displayAvatarURL()}`
 				}
 			],

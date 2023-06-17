@@ -12,7 +12,7 @@ module.exports = {
 	name: `interactionCreate`,
 	async run(client, int) {
 		try {
-			if (!int.guild || !int.channel || !int.message || !int.user) return;
+			if (!int.guild || !int.channel ||!int.message || !int.user) return;
 			let data = await ssugs.findOne({ message: int.message.id });
 			if (!data) return;
 
@@ -109,7 +109,7 @@ module.exports = {
 					await ssugs.findOneAndDelete({ message: int.message.id });
 	
 					break;
-				default:
+		default:
 					break;
 			}
 			if (int.isModalSubmit()) {

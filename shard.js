@@ -13,7 +13,7 @@ shards.on('shardCreate', shard =>
 		chalk.bold.green`║`,
 		chalk.bold.white`${String(new Date().toLocaleString())} \n`,
 		chalk.bold.green`║\n`,
-		chalk.green`┗━━━━━━━━━━━━━━━┛`
+		chalk.green`┗━━━━━━━━━━━━━━━━┛`
 	)
 );
 shards.spawn({ amount: shards.totalShards, delay: 5500, timeout: 30000 });

@@ -26,7 +26,7 @@ module.exports = {
     let embed = new EmbedBuilder()
       .setTitle(`informacion de ${usuario.user.username}`)
       .setThumbnail(usuario.user.displayAvatarURL({ format: `png` }))
-      .setColor(0x028384)
+      .setColor(0x3f7ede)
       .setImage(banner)
       .addFields(
         {

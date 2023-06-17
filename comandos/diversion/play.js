@@ -19,17 +19,17 @@ module.exports = {
       
         let Lose = new Discord.EmbedBuilder()
         .setTitle(`Resultado del Juego: **Perdiste**`)
-        .setColor(0xf40000)
+        .setColor(0xe14e2c)
         .setDescription(`Mi Elección: **${option[bot]}** \n Tu Elección: **${user}**`)
       
         let Ganaste = new Discord.EmbedBuilder()
         .setTitle(`Resultado del Juego: **Ganaste**`)
-        .setColor(0x0b8400)
+        .setColor(0x297020)
         .setDescription(`Mi Elección: **${option[bot]}** \n Tu Elección: **${user}**`)
       if (user === option[bot]) {
         let empate = new Discord.EmbedBuilder()
         .setTitle(`Resultado del Juego: **Empate**`)
-        .setColor(0xfd9910)
+        .setColor(0x3f7ede)
         .setDescription(`Mi Elección: **${option[bot]}** \n Tu Elección: **${user}**`)
         message.channel.send({ embeds: [empate] })
       } else if (user === stone) {
@@ -72,7 +72,7 @@ module.exports = {
     let embed = new Discord.EmbedBuilder()
       .setTitle(`Piedra Papel Tijeras`)
       .setDescription(`Juega al clasico juego de Piedra, Papel o Tijeras con el bot \n escoje una de estas de estas opciones`)
-
+		.setColor(0x3f7ede)
     let m = await message.channel.send({ embeds: [embed], components: [options] })
 
     const ifilter = i => i.user.id === message.author.id;

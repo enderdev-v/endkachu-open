@@ -15,7 +15,8 @@ const saySchema = require('../../Schemas/saySchema');
    name: "db-del", 
    alias: [], 
    userPerms: [], 
-   botPerms: [], 
+   botPerms: [],
+	 isDev: true,
   
    async run(client, message, args){ 
   

@@ -18,7 +18,7 @@ module.exports = {
 
 		  let embed = new Discord.EmbedBuilder()
 	   	.setTitle(`Mensaje borrado de ${data.author}`)
-	   	.setColor(`Red`)
+	   	.setColor(0x3f7ede)
 	  	.setDescription(`${data.message}`)
 	  	.addFields(
   {

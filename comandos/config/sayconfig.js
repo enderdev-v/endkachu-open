@@ -22,7 +22,7 @@ module.exports = {
 				embeds: [
 					{
 						title: 'Error',
-						color: 0xbc0000,
+						color: 0xe14e2c,
 						description: `no pusiste una opción \n opciones: antilinks, watermark, logs`
 					}
 				]
@@ -35,7 +35,7 @@ module.exports = {
 						embeds: [
 							{
 								title: 'Error',
-								color: 0xbc0000,
+								color: 0xe14e2c,
 								description: `no pusiste una opción  \n opciones: footer, mention, none`
 							}
 						]
@@ -50,7 +50,7 @@ module.exports = {
 						embeds: [
 							{
 								title: 'Watermark Colocada',
-								color: 0x00c800,
+								color: 0x297020,
 								description: `${type} fue seleccionada correctamente`
 							}
 						]
@@ -65,7 +65,7 @@ module.exports = {
 						embeds: [
 							{
 								title: 'Watermark colocada',
-								color: 0x00c800,
+								color: 0x297020,
 								description: `${type} fue seleccionada correctamente`
 							}
 						]
@@ -80,7 +80,7 @@ module.exports = {
 						embeds: [
 							{
 								title: 'Watermark removida',
-								color: 0x00c800,
+								color: 0x297020,
 								description: `Se ha quitado la Watermark colocada anteriormente`
 							}
 						]
@@ -90,7 +90,7 @@ module.exports = {
 						embeds: [
 							{
 								title: 'Error',
-								color: 0xbc0000,
+								color: 0xe14e2c ,
 								description: `${
 									args[2]
 								} no es una opción valida \n opciones: mention, footer, none`
@@ -105,7 +105,7 @@ module.exports = {
 							{
 								title: 'Canal no valido',
 								description: `canal de logs no valido`,
-								color: 0xbc0000
+								color: 0xe14e2c
 							}
 						]
 					});
@@ -119,7 +119,7 @@ module.exports = {
 						{
 							title: `canal establecido`,
 							description: `<:check:963554878200901692> Canal ${canal} establecido correctamente`,
-							color: 0x00c800
+							color: 0x297020
 						}
 					]
 				});
@@ -136,7 +136,7 @@ module.exports = {
 						embeds: [
 							{
 								title: 'Antilinks',
-								color: 0x00c800,
+								color: 0x297020,
 								description: `Antilinks Prendido`
 							}
 						]
@@ -151,7 +151,7 @@ module.exports = {
 						embeds: [
 							{
 								title: 'Antilinks',
-								color: 0x00c800,
+								color: 0x297020,
 								description: `Antilinks Apagado`
 							}
 						]
@@ -160,8 +160,8 @@ module.exports = {
 					return message.reply({
 						embeds: [
 							{
-								title: 'Opción no valids',
-								color: 0xbc000,
+								title: 'Opción no valida',
+								color: 0xe14e2c,
 								description: `${turn} no es una opción valida \n opciones: on, off`
 							}
 						]
@@ -172,7 +172,7 @@ module.exports = {
 					embeds: [
 						{
 							title: 'Error',
-							color: 0xbc0000,
+							color: 0xe14e2c,
 							description: `${option} no es una opción valida \n opciones: antilinks, watermark, logs`
 						}
 					]

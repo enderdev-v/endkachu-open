@@ -1,9 +1,4 @@
-const {
-	SlashCommandBuilder,
-	EmbedBuilder,
-	ActionRowBuilder,
-	SelectMenuBuilder
-} = require(`discord.js`);
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, SelectMenuBuilder } = require(`discord.js`);
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -29,12 +24,8 @@ module.exports = {
 				let aliases = cmd.aliases
 					? cmd.aliases.join(', ')
 					: 'No hay aliases del comando.';
-				let botPerms = cmd.botPerms
-					? cmd.botPerms.join(', ')
-					: 'No hay permisos requeridos.';
-				let userPerms = cmd.userPerms
-					? cmd.userPerms.join(', ')
-					: 'No hay permisos requeridos para el bot.';
+				let botPerms = cmd.botPerms.length !== 0 ? cmd.botPerms.join(', ') : 'No hay permisos requeridos.';
+				let userPerms = cmd.userPerms.length !== 0 ? cmd.userPerms.join(', ') : 'No hay permisos requeridos para el bot.';
 				//let uso = cmd.usage
 				//? cmd.usage.join(', ')
 				//	: 'No se proporciono el uso del comando';
@@ -59,23 +50,26 @@ module.exports = {
 							value: `${userPerms}`
 						}
 					],
-					color: 0x01a0a1,
+					color: 0x3f7ede,
 					footer: { text: ` [] opcional, {} requerido` }
 				};
 				return int.reply({ embeds: [helpcmd] });
+				
+				
 			}
 		}
+		
 
 		let embed = new EmbedBuilder()
 			.setTitle('✨ Hola soy  endkachu✨')
-			.setColor(0x01a0a1)
+			.setColor(0x3f7ede)
 			.setDescription(
 				'te brindo una lista de todas las categorías de comandos que yo tengo '
 			)
 			.addFields({
 				name: '◦•≫ Categorias',
 				value:
-					'<:epico:1044261418427502643> Generales \n <:queno:1044253989803397120> Moderación \n <:oye:1044251559988563978> Utilidad  \n <:wow:1044251815258099722> Configuracion \n  <:divertido:1044251730889670787> Diversion \n<:epico:1044261418427502643> Notas \n <:interesante:963559201584607373> Musica',
+					'<:epico:1044261418427502643> Generales \n <:queno:1044253989803397120> Moderación \n <:oye:1044251559988563978> Utilidad  \n <:wow:1044251815258099722> Configuracion \n  <:divertido:1044251730889670787> Diversion \n<:epico:1044261418427502643> Notas',
 				inline: false
 			});
 

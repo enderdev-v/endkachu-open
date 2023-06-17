@@ -5,6 +5,7 @@ module.exports = {
 	alias: [],
 	userPerms: [],
 	botPerms: [],
+	isDev: true,
 
 	async run(client, message, args) {
 		if (message.author.id !== '780277567537414165') return;

@@ -26,7 +26,7 @@ module.exports = {
    
    
    
-    message.channel.send({ embeds: [{ title: `Usuario Baneado`,  description: `El usuario **${user.user.tag}** fue baneado por **${banReason}**`, color: 0xbc0000 }] })
+    message.channel.send({ embeds: [{ title: `Usuario Baneado`,  description: `El usuario **${user.user.tag}** fue baneado por **${banReason}**`, color: 0x3f7ede }] })
 
   }
   

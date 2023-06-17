@@ -23,7 +23,7 @@ module.exports = {
         value: `${bug}`
       }
         )
-    .setColor("Red");
+    .setColor(0x3f7ede);
 
   message.delete()
 

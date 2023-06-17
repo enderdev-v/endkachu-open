@@ -26,7 +26,7 @@ module.exports = {
     if (!razon) return message.reply(`¿cual es la razon?`)
     let embed = new EmbedBuilder()
 		.setDescription(`**Warn a ${user}** \n\ ${razon}`)
-		.setColor(`Red`)
+		.setColor(0x297020)
 
       let objeto = {
         autor: message.author.id,

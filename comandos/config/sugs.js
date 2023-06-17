@@ -20,7 +20,7 @@ module.exports = {
 					{
 						title: 'Canal no valido',
 						description: `Ese canal no es válido o no existe en este servidor`,
-						color: 0xbc0000
+						color: 0xe14e2c
 					}
 				]
 			});
@@ -45,7 +45,7 @@ module.exports = {
 				{
 					title: `canal establecido`,
 					description: `<:check:963554878200901692> Canal ${canal} establecido correctamente`,
-					color: 0x00c800
+					color: 0x297020
 				}
 			]
 		});

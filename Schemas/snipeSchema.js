@@ -8,7 +8,7 @@ const snipe = new Schema({
 	
 	  message: {
 			type: String,
-			required: true
+			required: false
 		},
 	
 	  author: {

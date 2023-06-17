@@ -7,7 +7,7 @@ module.exports = {
 		if (int.customId !== `menu`) return;
 		let embed = new Discord.EmbedBuilder()
 			.setTitle('✨ Hola soy  endkachu✨')
-			.setColor(0x01a0a1)
+			.setColor(0x3f7ede)
 			.setDescription(
 				'te brindo una lista de todas las categorías de comandos que yo tengo '
 			)
@@ -19,7 +19,7 @@ module.exports = {
 			});
 		let general = {
 			title: '<:epico:1044261418427502643> Comandos de Generales ',
-			color: 0x01a0a1,
+			color: 0x3f7ede,
 			description: `Comandos que son para cosas del bot para estar en una categoria aparte`,
 			fields: [
 				{
@@ -32,7 +32,7 @@ module.exports = {
 
 		let mod = {
 			title: '<:queno:1044253989803397120> Comandos de Moderación',
-			color: 0x01a0a1,
+			color: 0x3f7ede,
 			description: `Comandos para moderar tu discord con funciones simples y completas`,
 			fields: [
 				{
@@ -45,7 +45,7 @@ module.exports = {
 		};
 		let util = {
 			title: '<:oye:1044251559988563978> Comandos de Utilidad',
-			color: 0x01a0a1,
+			color: 0x3f7ede,
 			description: `Comandos que te seran utiles en el servidor`,
 			fields: [
 				{
@@ -58,18 +58,18 @@ module.exports = {
 		};
 		let config = {
 			title: '<:wow:1044251815258099722> Comandos de Configuracion',
-			color: 0x01a0a1,
+			color: 0x3f7ede,
 			description: `Comandos que ayudan a que configuran y adaptan al bot a tus necesidades`,
-			fields: {
+			fields: [{
 				name: `◦•≫ Comandos`,
 				value:
-					'set-prefix \n setleaves \n setrevive \n sayconfig \n embedmsg \n suggest-channel  \n setwelcome',
+					'setprefix \n setleaves \n setrevive \n sayconfig \n suggest-channel  \n setwelcome',
 				inline: false
-			}
+			}]
 		};
 		let fun = {
 			title: '<:divertido:1044251730889670787> Comandos de Diversion',
-			color: 0x01a0a1,
+			color: 0x3f7ede,
 			description: `Comandos que te divertiran y alegraran tu servidor`,
 			fields: [
 				{
@@ -82,7 +82,7 @@ module.exports = {
 		};
 		let notes = {
 			title: '<:interesante:1044261055280463882> Comandos de Musica',
-			color: 0x01a0a1,
+			color: 0x3f7ede,
 			description: `Comandos que te ayudarán a organizarte en el servidor con notas`,
 			fields: [
 				{

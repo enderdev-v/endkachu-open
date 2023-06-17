@@ -2,11 +2,11 @@ const { setprefix } = require(`../../utility/funciones`)
 
 module.exports = {
 	name: `messageCreate`,
-	async run (client, message) {
+	async run (client, msg) {
 		
-		if(!message.content.match(`<@${client.user.id}>`)) return;
-
-    message.reply(`hola este es mi prefix \n\ Prefix: ${await setprefix(message.guild.id)}`)
+		if (!msg.content.match(`<@${client.user.id}>`)) return;
+		if (msg.author.bot) return;
+    msg.reply({ embeds: [{ title: `Hola soy endkachu!`, description: `- ***El prefix de este servidor es: **${await setprefix(msg.guild.id)}** *** \n- ***Usa ${await setprefix(msg.guild.id)}help, para obtener mis comandos***`,  color: 0x3f7ede }], ephemeral: true })
 
 	}
 }

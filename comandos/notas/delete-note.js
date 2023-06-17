@@ -6,42 +6,15 @@ module.exports = {
 	name: 'delete-note',
 	alias: [],
 	description: `Borra una nota de tu lista \n usa !delete-note {idnota}`,
-	userPerms: [],
-	botPerms: [],
+	userPerms: [`Administrator`],
+	botPerms: [`Administrator`],
 
 	async run(client, message, args) {
 		let data = await noteSchema.findOne({
 			guild: message.guild.id,
 			user: message.author.id
 		});
-		if (data.perms == `admin`) {
-			if (
-				message.guild.members.me.permissions.has(
-					PermissionFlagsBits.Administrator
-				)
-			)
-				return console.log('Funciona');
-			if (message.member.permissions.has(PermissionFlagsBits.Administrator))
-				return console.log('Hola si funciono');
-		} else if (data.perms == `admin-msg`) {
-			if (
-				message.guild.members.me.permissions.has(
-					PermissionFlagsBits.ManageMessages
-				)
-			)
-				return console.log('Funciona');
-			if (message.member.permissions.has(PermissionFlagsBits.ManageMessages))
-				return console.log('Hola si funciono');
-		} else {
-			if (
-				message.guild.members.me.permissions.has(
-					PermissionFlagsBits.SendMessages
-				)
-			)
-				return console.log('Funciona');
-			if (message.member.permissions.has(PermissionFlagsBits.SendMessages))
-				return console.log('Hola si funciono');
-		}
+
 		if (data.notes.length === 0) return message.reply('No tienes notas');
 		let nota = args[0];
 
@@ -53,7 +26,8 @@ module.exports = {
 				embeds: [
 					{
 						title: 'Nota removida',
-						description: 'La nota se a removido correctamente'
+						description: 'La nota se a removido correctamente',
+						color: 0x3f7ede
 					}
 				]
 			});

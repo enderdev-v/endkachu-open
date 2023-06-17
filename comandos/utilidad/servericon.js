@@ -11,8 +11,9 @@ module.exports = {
     let embedavatar = new  EmbedBuilder()
 
     .setTitle(`Icono del servidor **${message.guild.name}**`)
-    .setImage(message.guild.iconURL({ size: 1024, dynamic: true, format: `png` }))
-    .setFooter({ text: `icono pedido por: ${message.author.username}` });
+    .setImage(message.guild.iconURL({ size: 1024, dynamic: true, extension: `png` }))
+    .setFooter({ text: `icono pedido por: ${message.author.username}` })
+		.setColor(0x3f7ede);
 
     message.channel.send({ embeds: [embedavatar] });
 

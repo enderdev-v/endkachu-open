@@ -13,7 +13,7 @@ module.exports = {
       
     let data = await reviveSchema.findOne({ guild: message.guild.id })
 
-    if (!data || !data.channel) return message.reply("no")
+    if (!data || !data.channel) return message.reply({ embeds: [{ title: `Error`, description: `No hay un canal para revivir el canal`, color: 0x3f7ede }] })
    let canal = message.guild.channels.cache.get(data.channel)
      
     if (canal.type === ChannelType.GuildForum) {

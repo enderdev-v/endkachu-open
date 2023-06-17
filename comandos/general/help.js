@@ -44,7 +44,7 @@ module.exports = {
 							value: `${userP}`
 						}
 					],
-					color: 0x01a0a1,
+					color: 0x3f7ede,
 					footer: { text: ` [] opcional, {} requerido` }
 				};
 				return message.channel.send({ embeds: [helpcmd] });
@@ -53,14 +53,14 @@ module.exports = {
 
 		let embed = new Discord.EmbedBuilder()
 			.setTitle('✨ Hola soy  endkachu✨')
-			.setColor(0x01a0a1)
+			.setColor(0x3f7ede)
 			.setDescription(
 				'te brindo una lista de todas las categorías de comandos que yo tengo '
 			)
 			.addFields({
 				name: '◦•≫ Categorias',
 				value:
-					'<:interesante:1044261055280463882> Generales \n <:queno:1044253989803397120> Moderación \n <:oye:1044251559988563978> Utilidad  \n <:wow:1044251815258099722> Configuracion \n <:divertido:1044251730889670787> Diversion \n<:epico:1044261418427502643> Notas \n <:interesante:963559201584607373> Musica',
+					'<:interesante:1044261055280463882> Generales \n <:queno:1044253989803397120> Moderación \n <:oye:1044251559988563978> Utilidad  \n <:wow:1044251815258099722> Configuracion \n <:divertido:1044251730889670787> Diversion \n<:epico:1044261418427502643> Notas',
 				inline: false
 			});
 

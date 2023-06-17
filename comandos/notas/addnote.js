@@ -10,35 +10,6 @@ module.exports = {
 	botPerms: [],
 
 	async run(client, message, args) {
-		let data = await noteSchema.findOne({ perms: 'Admin' });
-		if (data.perms == `admin`) {
-			if (
-				message.guild.members.me.permissions.has(
-					PermissionFlagsBits.Administrator
-				)
-			)
-				return console.log('Funciona');
-			if (message.member.permissions.has(PermissionFlagsBits.Administrator))
-				return console.log('Hola si funciono');
-		} else if (data.perms == `admin-msg`) {
-			if (
-				message.guild.members.me.permissions.has(
-					PermissionFlagsBits.ManageMessages
-				)
-			)
-				return console.log('Funciona');
-			if (message.member.permissions.has(PermissionFlagsBits.ManageMessages))
-				return console.log('Hola si funciono');
-		} else {
-			if (
-				message.guild.members.me.permissions.has(
-					PermissionFlagsBits.SendMessages
-				)
-			)
-				return console.log('Funciona');
-			if (message.member.permissions.has(PermissionFlagsBits.SendMessages))
-				return console.log('Hola si funciono');
-		}
 		await noteSchema.findOneAndUpdate(
 			{ guild: message.guild.id, user: message.author.id },
 			{ guild: message.guild.id, user: message.author.id },
@@ -53,7 +24,7 @@ module.exports = {
 		let embed = new EmbedBuilder()
 			.setTitle('Nota añadida')
 			.setDescription(`La nota fue añadida correctamente`)
-			.setColor(`Green`);
+			.setColor(0x3f7ede);
 
 		let objeto = {
 			titulo: titulo,
@@ -68,9 +39,6 @@ module.exports = {
 					notes: objeto
 				}
 			},
-			/*{
-				
-			},*/
 			{ new: true, upsert: true }
 		);
 

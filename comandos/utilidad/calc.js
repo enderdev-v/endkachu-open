@@ -9,35 +9,16 @@ module.exports = {
 
   async run(client, message, args){
 
-    let num1 = args[0];
-    let sig = args[1];
-    let num2 = args[2];
+    const n = args[0];
+    const s = args[1];
+    const n1 = args[2];
     
-    if (!num1) return message.reply(`especifica el primer numero`)
-    if (!sig) return message.reply(`especifica el signo de la operacion`)
-    if (!num2) return message.reply(`especifica el segundo numero`)
-
-    function Calc(n1, n2) {
-      if (sig == "+") {
-        let result = parseFloat(n1) + parseFloat(n2)
-        message.channel.send(`la suma \n ${n1} + ${n2} = ${result}`)
-      } else if (sig == "-") {
-        let result = parseFloat(n1) - parseFloat(n2)
-        message.channel.send(`la resta \n ${n1} - ${n2} = ${result}`)
-      } else if (sig == "*") {
-        let result = parseFloat(n1) * parseFloat(n2)
-        message.channel.send(`la multiplicación \n ${n1} * ${n2} = ${result}`)
-      } else if (sig == "/") {
-        let result = parseFloat(n1) / parseFloat(n2)
-        message.channel.send(`la division \n ${n1} / ${n2} = ${result}`)
-      } else {
-        message.reply(`el signo no es valido`)
-      }
-    }
-
-    Calc(num1, num2)
+    if (!n) return message.reply({ embeds: [{ title: `Error`, description: `No colocaste el primer número de la operación matemática`, color: 0xe14e2c }] })
+    if (!s) return message.reply({ embeds: [{ title: `Error`, description: `No colocaste el signo de la operación matemática`, color: 0xe14e2c }] })
+    if (!n1) return message.reply({ embeds: [{ title: `Error`, description: `No colocaste el segundo número de la operación matemática`, color: 0xe14e2c }] })
     
-
+		let resultado = eval(`${n} ${s} ${n1}`)
+    message.channel.send({ embeds: [{ title: `La Operación matemática`, description: `${n} ${s} ${n1}`, fields: [{ name: `Resultado`, value: `${resultado}` }], color: 0x3f7ede }] })
   }
   
 }

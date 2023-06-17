@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require(`discord.js`);
-const embedSchema = require("../../Schemas/embedSchema")
+
 module.exports = {
   name: "sayembed",
   alias: [],
@@ -8,15 +8,9 @@ module.exports = {
   botPerms: [`Administrator`],
 
   async run(client, message, args) {
+		let texto = args.slice(1).join(" ")
 
-    let data = await embedSchema.findOne({ guild: message.guild.id })
-
-    let texto = args.slice(1).join(" ")
-
-    let color = (!data?.color) ? 0x050cd9 :  parseInt(data?.color)
-    let footer = (!data?.footer) ? `Anunció de ${message.guild.name}` : data.footer 
-
-    if (!texto) return message.channel.send("que escribo en el anuncio")
+      if (!texto) return message.channel.send("que escribo en el anuncio")
 
     let title = args[0]
 
@@ -27,7 +21,7 @@ module.exports = {
     let embed = new EmbedBuilder()
       .setTitle(title)
       .setThumbnail(message.guild.iconURL())
-      .setColor(color)
+      .setColor(0x3f7ede)
       .addFields(
         {
           name: "Anuncio:",
@@ -35,10 +29,9 @@ module.exports = {
           inline: false
         }
       )
-      .setFooter({ text: footer })
+      .setFooter({ text: `Servidor ${message.guild.name}`})
   
-     if (!data?.msg) return message.channel.send({ embeds: [embed] })
-     else return message.channel.send({ content: data.msg, embeds: [embed]})
-  }
+     message.channel.send({ embeds: [embed] })
+       }
 
 }
