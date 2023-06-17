@@ -13,8 +13,13 @@ module.exports = {
     let roles = usuario.roles.cache
       .sort((a, b) => b.position - a.position)
       .map(roles => roles.toString())
-      .slice(0, -1)
-      let banner = usuario.banner ? usuario.bannerURL() : usuario.hexAccentColor;
+      .slice(0, -1);
+
+
+    let banner = usuario.banner ? usuario.bannerURL() : usuario.hexAccentColor;
+    let name = usuario.user.discriminator = "0" ? usuario.user.username : usuario.user.tag;
+
+		//console.log(usuario.user.discriminator, "discriminador")
 
     let displayRoles;
 
@@ -31,7 +36,7 @@ module.exports = {
       .addFields(
         {
           name: `Tag`,
-          value: `${usuario.user.tag}`,
+					value: `${name}`,
           inline: false
         },
         {
