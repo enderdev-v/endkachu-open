@@ -10,12 +10,12 @@ module.exports = {
  async run(client, message, args){
 
    
-				if(!args[0]) return message.reply({ content: `debes escribir una id del usuario`,  allowedMentions: { repliedUser: false } })
+	if(!args[0]) return message.reply({ content: `debes escribir una id del usuario`,  allowedMentions: { repliedUser: false } })
 
-		let razon = args.slice(1).join(" ")
+		const razon = args.slice(1).join(" "),
+	  user = await client.users.fetch(args[0])
 	 if(!razon) return message.reply({ content: `debes escribir una razon de su ban`,  allowedMentions: { repliedUser: false } })
 
-		let user = await client.users.fetch(args[0])
 		message.guild.members.ban(user.id)
 
 		message.channel.send(`el usuario ${user} fue baneado por ${razon}`)

@@ -12,11 +12,9 @@ module.exports = {
 		
 		try{
 			
-		  let data = await snipe.findOne({ channelId: message.channel.id })
-
+		  const data = await snipe.findOne({ channelId: message.channel.id })
 	   	if(!data) return message.reply(`no se a borrado ningun mensaje todavia`)
-
-		  let embed = new Discord.EmbedBuilder()
+		  const embed = new Discord.EmbedBuilder()
 	   	.setTitle(`Mensaje borrado de ${data.author}`)
 	   	.setColor(0x3f7ede)
 	  	.setDescription(`${data.message}`)

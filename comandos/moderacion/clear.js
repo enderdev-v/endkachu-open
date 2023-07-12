@@ -20,7 +20,7 @@ module.exports = {
             
   await message.channel.bulkDelete(parseInt(cantidad) + 1, true)
 
-await message.channel.send(`he eliminado ${cantidad} mensajes`).then(m => {
+await message.channel.send(`acabo de eliminar ${cantidad} mensajes`).then(m => {
   setTimeout(() => {
        m.delete()
     }, 6000)  

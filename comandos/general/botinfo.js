@@ -23,13 +23,13 @@ module.exports = {
 			)
 			.addFields(
 				{
-					name: `Prefix:`,
+					name: `Default Prefix:`,
 					value: `**!**`,
 					inline: false
 				},
 				{
 					name: `Lenguaje:`,
-					value: '```Javascript \n```',
+					value: '```ts\n TypeScript \n```',
 					inline: false
 				},
 				{
@@ -39,7 +39,7 @@ module.exports = {
 				},
 				{
 					name: `Dessarrolladores:`,
-					value: `**__endercrack#__**`,
+					value: `**__endercrack__**`,
 					inline: false
 				},
 				{
@@ -49,18 +49,18 @@ module.exports = {
 				},
 				{
 					name: '**Librerias:**',
-					value: `> Discord.js **v14.6.0** \n > MongoDB **6.7.3** \n canvas **2.10.0**`,
+					value: `> Discord.js **v14.6.0** \n > MongoDB **6.7.3** \n > canvas **2.10.0**`,
 					inline: true
 				},
 				{
-					name: `**Stats**`,
-					value: `> **Servidores:** **__${
+					name: `***Stats***`,
+					value: `- **Servidores:** **__${
 						client.guilds.cache.size
-					}__** \n > **Usuarios:** **__${
+					}__** \n - **Usuarios:** **__${
 						client.users.cache.size
-					}__** \n > **Canales:** **__${
+					}__** \n - **Canales:** **__${
 						client.channels.cache.size
-					}__** \n > **Uptime:** **__${d} dias, ${h} horas, ${m} minutos, ${s} segundos__**~~`,
+					}__** \n - **Uptime:** **__${d} dias, ${h} horas, ${m} minutos, ${s} segundos__**~~`,
 					inline: true
 				}
 			);
@@ -74,7 +74,7 @@ module.exports = {
 
 			new Discord.ButtonBuilder()
 				.setStyle(ButtonStyle.Link)
-				.setLabel('Web')
+				.setLabel('Pagina Web')
 				.setURL('https://endkachu-web.enderdev-v.repl.co/')
 				.setEmoji('1044251559988563978')
 		]);

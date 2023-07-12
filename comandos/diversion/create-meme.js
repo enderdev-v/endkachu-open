@@ -19,15 +19,15 @@ registerFont(`./public/fonts/OleoScript-Bold.ttf`, { family: `OleoScript` });
      let a = texto.split(" ").length / 2
       
        // Canvas 
-     const Canvas = require("canvas") 
-     const canvas = Canvas.createCanvas(474, 468) 
-     const ctx = canvas.getContext("2d") 
+     const Canvas = require("canvas") ,
+     canvas = Canvas.createCanvas(474, 468),
+     ctx = canvas.getContext("2d") 
        // Imagen 
      const background = await Canvas.loadImage(back) 
      ctx.drawImage(background, 0, 0) 
      ctx.fillStyle = "#0000000" 
      ctx.textAlign = "start"    
-       ctx.font = "30px Roboto Regular"  
+      ctx.font = "30px Roboto Regular"  
      ctx.fillText(`${texto.split(" ", a).join(" ")} \n ${texto.split(" ").slice(a).join(" ")}`, 15, 55)
 
          let attachment = new AttachmentBuilder(canvas.toBuffer(), { name: "meme.png" });

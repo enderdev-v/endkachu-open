@@ -8,9 +8,8 @@ module.exports = {
   botPerms: [`BanMembers`],
  async run(client, message, args){
 
-    let user = message.mentions.members.first();
-
-    let banReason = args.join(` `).slice(22);
+    const user = message.mentions.members.first(),
+      banReason = args.join(` `).slice(22);
 
     if(!user) return message.reply("Debes mencionar a alguien!")
 
@@ -21,10 +20,6 @@ module.exports = {
     if(!banReason) return message.reply("cual es la razon del baneo al usuario")
 
     user.ban({ reason: banReason })
-
-   
-   
-   
    
     message.channel.send({ embeds: [{ title: `Usuario Baneado`,  description: `El usuario **${user.user.tag}** fue baneado por **${banReason}**`, color: 0x3f7ede }] })
 

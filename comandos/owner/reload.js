@@ -8,7 +8,7 @@ module.exports = {
 	isDev: true,
 
 	async run(client, message, args) {
-		if (message.author.id !== '780277567537414165') return;
+		/*if (message.author.id !== '780277567537414165') return;
 		message.channel
 			.send({
 				embeds: [
@@ -31,6 +31,6 @@ module.exports = {
 						}
 					]
 				});
-			});
+			});*/ client.kill
 	}
 };
