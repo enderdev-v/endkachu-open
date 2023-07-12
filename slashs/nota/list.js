@@ -15,12 +15,11 @@ module.exports = {
     int.reply({ embeds: [{ title: `Lista de notas`, description: `La lista de notas fue mandada correctamente`, color: 0x3f7ede }], ephemeral: true })
 
 		paginas(
-			client,
 			int,
 			0x3f7ede,
 			data.notes.map(
 				(note, index) =>
-					`\n ==================== \n ID: ${index} \n Fecha: <t:${Math.round(
+					`\n ————————》✧《————————— \n ID: ${index} \n Fecha: <t:${Math.round(
 						note.fecha / 1000
 					)}> \n Titulo: ${note.titulo} \n **Nota:** \n ${note.nota}`
 			),

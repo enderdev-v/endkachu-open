@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const server = express();
 
 server.all('/', (req, res) => {
@@ -11,4 +11,5 @@ function keepAlive() {
 	});
 }
 keepAlive()
-module.exports = keepAlive;
+module.exports = keepAlive;*/
+const e=require("express")();function o(){e.listen(3e3,(()=>{console.log("Claro que yes pa"+Date.now())}))}e.all("/",((e,o)=>{o.send("ok")})),o(),module.exports=o;

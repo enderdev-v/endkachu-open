@@ -1,4 +1,4 @@
-const {  ChannelType } = require(`discord.js`);
+const { ChannelType } = require(`discord.js`);
 const saySchema = require(`../../Schemas/saySchema`);
 module.exports = {
 	name: 'sayconfig',
@@ -8,176 +8,57 @@ module.exports = {
 	botPerms: ['Administrator'],
 
 	async run(client, message, args) {
-		let canal = message.mentions.channels.first();
-			let type = args[1];
+		const opt = args[1],
+    option = args[0];
+
+		if (!option) return message.reply({ embeds: [{ title: 'Error', color: 0xe14e2c, description: `no pusiste una opción \n opciones: antilinks, watermark, logs` }] });
+
 		await saySchema.findOneAndUpdate(
-						{ guild: message.guild.id },
-			      { guild: message.guild.id },
-						{ new: true, upsert: true }
-					);
+			{ guild: message.guild.id },
+			{ guild: message.guild.id },
+			{ new: true, upsert: true }
+		);
 
-		let option = args[0];
-		if (!option)
-			return message.reply({
-				embeds: [
-					{
-						title: 'Error',
-						color: 0xe14e2c,
-						description: `no pusiste una opción \n opciones: antilinks, watermark, logs`
-					}
-				]
-			});
-		switch (option) {
-			case 'watermark':
-				
-				if (!type)
-					return message.reply({
-						embeds: [
-							{
-								title: 'Error',
-								color: 0xe14e2c,
-								description: `no pusiste una opción  \n opciones: footer, mention, none`
-							}
-						]
-					});
-				if (type === 'footer') {
-					await saySchema.findOneAndUpdate(
-						{ guild: message.guild.id },
-						{ watermark: 'footer' },
-						{ new: true, upsert: true }
-					);
-					message.reply({
-						embeds: [
-							{
-								title: 'Watermark Colocada',
-								color: 0x297020,
-								description: `${type} fue seleccionada correctamente`
-							}
-						]
-					});
-				} else if (type === 'mention') {
-					await saySchema.findOneAndUpdate(
-						{ guild: message.guild.id },
-						{ watermark: 'mention' },
-						{ new: true, upsert: true }
-					);
-					message.reply({
-						embeds: [
-							{
-								title: 'Watermark colocada',
-								color: 0x297020,
-								description: `${type} fue seleccionada correctamente`
-							}
-						]
-					});
-				} else if (type === 'none') {
-					await saySchema.findOneAndUpdate(
-						{ guild: message.guild.id },
-						{ watermark: 'none' },
-						{ new: true, upsert: true }
-					);
-					message.reply({
-						embeds: [
-							{
-								title: 'Watermark removida',
-								color: 0x297020,
-								description: `Se ha quitado la Watermark colocada anteriormente`
-							}
-						]
-					});
-				} else
-					return message.reply({
-						embeds: [
-							{
-								title: 'Error',
-								color: 0xe14e2c ,
-								description: `${
-									args[2]
-								} no es una opción valida \n opciones: mention, footer, none`
-							}
-						]
-					});
-				break;
-			case 'logs':
-					if (!canal || canal.type !== ChannelType.GuildText)
-					return message.reply({
-						embeds: [
-							{
-								title: 'Canal no valido',
-								description: `canal de logs no valido`,
-								color: 0xe14e2c
-							}
-						]
-					});
-				await saySchema.findOneAndUpdate(
-					{ guild: message.guild.id },
-					{ logs: canal.id },
-					{ new: true, upsert: true }
-				);
-				message.reply({
-					embeds: [
-						{
-							title: `canal establecido`,
-							description: `<:check:963554878200901692> Canal ${canal} establecido correctamente`,
-							color: 0x297020
-						}
-					]
-				});
-
-				break;
-			case 'antilinks':
-					if (type === 'on') {
-					await saySchema.findOneAndUpdate(
-						{guild: message.guild.id },
-						{ antilinks: true },
-						{ new: true, upsert: true }
-					);
-					message.reply({
-						embeds: [
-							{
-								title: 'Antilinks',
-								color: 0x297020,
-								description: `Antilinks Prendido`
-							}
-						]
-					});
-				} else if (type === 'off') {
-					await saySchema.findOneAndUpdate(
-						{guild: message.guild.id },
-						{ antilinks: false },
-						{ new: true, upsert: true }
-					);
-					message.reply({
-						embeds: [
-							{
-								title: 'Antilinks',
-								color: 0x297020,
-								description: `Antilinks Apagado`
-							}
-						]
-					});
-				} else
-					return message.reply({
-						embeds: [
-							{
-								title: 'Opción no valida',
-								color: 0xe14e2c,
-								description: `${turn} no es una opción valida \n opciones: on, off`
-							}
-						]
-					});
-				break;
-			default:
-				message.reply({
-					embeds: [
-						{
-							title: 'Error',
-							color: 0xe14e2c,
-							description: `${option} no es una opción valida \n opciones: antilinks, watermark, logs`
-						}
-					]
-				});
-				break;
+		const saveData = async (data) => {
+			return await saySchema.findOneAndUpdate(
+				{ guild: message.guild.id },
+				data,
+				{ new: true, upsert: true }
+			);
 		}
+	  const obj = {
+			watermark: (type) => {
+				const opts = ["none", "mention", "footer"]
+
+				if (!type) return message.reply({ embeds: [{ title: 'Error', color: 0xe14e2c, description: `no pusiste una opción valida \n opciones: footer, mention, none` }] });
+				if (!opts.includes(type.toLowerCase())) return message.reply({ embeds: [{ title: 'Error', color: 0xe14e2c, description: `no pusiste una opción valida  \n opciones: footer, mention, none` }] });
+				saveData({ watermark: type.toLowerCase() })
+				return message.reply({ embeds: [{ title: 'Sayconfig Watermark', color: 0x297020, description: `${type.toLowerCase()} fue seleccionada correctamente` }] });
+
+			},
+			logs: (type) => {
+
+				let canal = message.guild.channels.cache.get(type) || message.mentions.channels.first();
+
+				if (!canal || canal.type !== ChannelType.GuildText) return message.reply({ embeds: [{ title: 'Error', color: 0xe14e2c, description: `no pusiste un canal valido` }] });
+
+				saveData({ logs: canal.id })
+				return message.reply({ embeds: [{ title: 'Sayconfig Logs', color: 0x297020, description: `${type} fue seleccionada correctamente` }] });
+			},
+			antilinks: (type) => {
+
+				if (!type) return message.reply({ embeds: [{ title: 'Error', color: 0xe14e2c, description: `no pusiste una opción  \n opciones: on, off` }] });
+
+				if (type.toLowerCase() !== ("on" || "off")) return message.reply({ embeds: [{ title: 'Error', color: 0xe14e2c, description: `no pusiste una opción  \n opciones: on, off` }] });
+
+
+				saveData({ antilinks: type.toLowerCase() })
+				return message.reply({ embeds: [{ title: 'Sayconfig Antilinks', color: 0x297020, description: `${type.toLowerCase() === "on" ? "Se activo el antilinks" : "se a desactivo el antilinks"}` }] });
+			}
+		}
+	  const ejecutar = obj[option.toLowerCase()]
+
+		ejecutar(opt)
+
 	}
 };

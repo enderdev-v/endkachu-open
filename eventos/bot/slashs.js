@@ -1,5 +1,5 @@
 const { InteractionType } = require(`discord.js`)
-
+const chalk = require(`chalk`)
 module.exports = {
 	name: `interactionCreate`,
 	async run(client, int) {
@@ -7,10 +7,8 @@ module.exports = {
 		const slashcmd = client.slashcommands.get(int.commandName);
 		if (!slashcmd) return;
 
-
-      
 		try {
-			if (slashcmd.data.options[0].type > 2 || slashcmd.data.options.length === 0) {
+			if (slashcmd.data.options.length === 0 || slashcmd.data.options[0].type > 2) {
 				return await slashcmd.run(client, int)
 			} else {
 				const subcmd = client.subcmds.get(`${int.commandName}.${int.options.getSubcommand()}`);

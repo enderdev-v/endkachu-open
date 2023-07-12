@@ -1,4 +1,4 @@
-entrypoint = "index.js"
+entrypoint = "shard.js"
 
 hidden = [".config"]
 run = "npm start"

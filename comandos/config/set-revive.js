@@ -8,111 +8,51 @@ module.exports = {
 	userPerms: [`ManageGuild`],
 	botPerms: [`ManageGuild`],
 	async run(client, message, args) {
-		let data = await reviveSchema.findOne({ guild: message.guild.id });
-
+		let role = message.mentions.roles.first();
+		let canal = message.mentions.channels.first();
 		let option = args[0];
-		if (!option)
-			return message.reply({
-				embeds: [
-					{
-						title: 'Error',
-						color: 0xe14e2c,
-						description: `no pusiste una opción \n opciones: rol, channel`
-					}
-				]
-			});
 
-		switch (option) {
-			case 'rol':
-				let role = message.mentions.roles.first();
-				if (!role)
-					return message.reply({
-						embeds: [
-							{
-								color: 0xe14e2c,
-								title: 'Hubo un error',
-								description: 'no se encuentra o no mencionaste el rol'
-							}
-						]
-					});
+		await reviveSchema.findOneAndUpdate(
+			{ guild: message.guild.id },
+			{ guild: message.guild.id },
+			{ new: true, upsert: true }
+		);
 
-				if (!data?.role) {
-					let newdata = new reviveSchema({
-						role: role.id,
-						guild: message.guild.id
-					});
-					return await newdata.save();
-				}
-				await reviveSchema.findOneAndUpdate({
-					role: role.id,
-					guild: message.guild.id
-				});
+		if (!option) return message.reply({ embeds: [{ title: 'Error', color: 0xe14e2c, description: `no pusiste una opción \n opciones: rol, channel` }] });
+		
 
-				message.channel.send({
-					embeds: [
-						{
-							title: `Rol establecido`,
-							description: `<:check:963554878200901692> Rol:  ${role} establecido correctamente`,
-							color: 0x297020
-						}
-					]
-				});
+		 
 
-				break;
-			case 'channel':
-				let canal = message.mentions.channels.first();
-				if (
-					!canal ||
-					canal.type === ChannelType.GuildStageVoice ||
-					canal.type === ChannelType.GuildVoice
-				) {
-					return message.reply({
-						embeds: [
-							{
-								title: 'Canal no valido',
-								description: `Ese canal no es válido o no existe en este servidor`,
-								color: 0xe14e2c
-							}
-						]
-					});
-				}
 
-				// if (canal.type !== ChannelType.GuildText) return message.reply({ embeds: [{ title: "Canal no valido", description: `Ese canal no existe`, color: 0xbc0000 }] });
-
-				if (!data?.channel) {
-					let newdata = new reviveSchema({
-						channel: canal.id,
-						guild: message.guild.id
-					});
-					return await newdata.save();
-				}
-				await reviveSchema.findOneAndUpdate({
-					channel: canal.id,
-					guild: message.guild.id
-				});
-
-				message.reply({
-					embeds: [
-						{
-							title: `canal establecido`,
-							description: `<:check:963554878200901692> Canal ${canal} establecido correctamente`,
-							color: 0x297020
-						}
-					]
-				});
-
-				break;
-			default:
-				message.reply({
-					embeds: [
-						{
-							title: 'Error',
-							color: 0xe14e2c,
-							description: `${option} no es una opción valida \n opciones: channel, message`
-						}
-					]
-				});
-				break;
+		const saveData = async (data) => {
+			return await reviveSchema.findOneAndUpdate(
+				{ guild: message.guild.id },
+				data,
+				{ new: true, upsert: true }
+			);
 		}
+
+		const object = {
+			rol: () => {
+				if (!role)
+					return message.reply({ embeds: [{ color: 0xe14e2c, title: 'Hubo un error', description: 'no se encuentra o no mencionaste el rol' }] });
+				saveData({ role: role.id })
+				return message.channel.send({	embeds: [{ title: `Rol establecido`, description: `<:check:963554878200901692> Rol:  ${role} establecido correctamente`, color: 0x297020 }] });
+ 
+			},
+			channel: () => {
+				if ( !canal || canal.type === ChannelType.GuildStageVoice || canal.type === ChannelType.GuildVoice) {
+					return message.reply({ embeds: [{ title: 'Canal no valido', description: `Ese canal no es válido o no existe en este servidor`, color: 0xe14e2c }]	});
+				}
+				saveData({ channel: canal.id })
+				return message.channel.send({ embeds: [{ title: `Canal establecido`, description: `<:check:963554878200901692> Canal:  ${canal} establecido correctamente`, color: 0x297020 }] });
+
+			}
+		};
+
+		let ejecutar = object[option.toLowerCase()]
+
+		ejecutar()
+
 	}
 };

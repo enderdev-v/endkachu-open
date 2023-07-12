@@ -12,27 +12,16 @@ module.exports = {
 	async run(client, message, args) {
 		let data = await noteSchema.findOne({ guild: message.guild.id, user: message.author.id });
 		if (!data) return message.reply(`no añadiste una nota`);
-     
-		
-		
-		if (data.notes.length == 0) return message.reply(`no añadiste una nota`);
-
-		
-    
+     		
+		if (data.notes.length == 0) return message.reply(`no añadiste una nota`);    
 
 
-		paginas(
-			client,
-			message,
-			0x3f7ede,
-			data.notes.map(
-				(note, index) =>
-					`\n ==================== \n ID: ${index} \n Fecha: <t:${Math.round(
+		paginas(message, 0x3f7ede,
+data.notes.map((note, index) =>
+					`\n ————————》✧《————————— \n ID: ${index} \n Fecha: <t:${Math.round(
 						note.fecha / 1000
 					)}> \n Titulo: ${note.titulo} \n **Nota:** \n ${note.nota}`
-			),
-			`Notas de usuario ${message.author.tag}`,
-			2
+			), `Notas de usuario ${message.author.username}`, 2
 		);
 	}
 };

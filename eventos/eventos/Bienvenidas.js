@@ -1,7 +1,6 @@
 const welcomeSchema = require('../../Schemas/welcomeSchema');
 const { AttachmentBuilder, EmbedBuilder } = require('discord.js');
 const { registerFont } = require('canvas');
-registerFont('./public/fonts/Roboto-Regular.ttf', { family: 'Roboto' });
 registerFont(`./public/fonts/OleoScript-Bold.ttf`, { family: `OleoScript` });
 
 module.exports = {
@@ -46,7 +45,7 @@ module.exports = {
 		ctx.font = '70px "OleoScript Bold"';
 		ctx.fillText('Bienvenid@', 1200 / 2, 50 + 70);
 
-		ctx.font = '60px "Roboto Regular"';
+		ctx.font = '60px "OleoScript Bold"';
 		ctx.fillText(member.user.tag, 1200 / 2, 675 - 125 - 50);
 
 		ctx.font = '50px "OleoScript Bold"';

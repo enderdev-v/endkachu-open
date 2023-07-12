@@ -15,13 +15,12 @@ const saySchema = require('../../Schemas/saySchema');
    name: "db-del", 
    alias: [], 
    userPerms: [], 
-   botPerms: [],
-	 isDev: true,
+   botPerms: [],	 
   
    async run(client, message, args){ 
   
   if (message.author.id !== '780277567537414165') return;
-		message.reply('Hola');
+		 message.reply("Borrando bases de datos")
 		const guild = message.guild;
 		await leaveSchema.findOneAndDelete({ guild: guild.id });
 		await prefixSchema.findOneAndDelete({ guildId: guild.id });

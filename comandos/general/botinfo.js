@@ -9,17 +9,17 @@ module.exports = {
 	botPerms: [],
 
 	async run(client, message, args) {
-		let d = Math.floor(client.uptime / 86400000);
-		let h = Math.floor(client.uptime / 3600000) % 24;
-		let m = Math.floor(client.uptime / 60000) % 60;
-		let s = Math.floor(client.uptime / 1000) % 60;
+	  const d = Math.floor(client.uptime / 86400000),
+		 h = Math.floor(client.uptime / 3600000) % 24,
+		 m = Math.floor(client.uptime / 60000) % 60,
+		 s = Math.floor(client.uptime / 1000) % 60;
 
 		let embed = new Discord.EmbedBuilder()
 			.setTitle('**Informacion de endkachu**')
 			.setThumbnail(client.user.displayAvatarURL())
 			.setColor(0x3f7ede)
 			.setDescription(
-				'hola soy endkachu es un bot de multifunción que viene a alegrar tu servidor'
+				'hola soy **endkachu!** \n * Un bot que tiene el labor de hacer que te la pases bien en discord '
 			)
 			.addFields(
 				{
@@ -34,12 +34,12 @@ module.exports = {
 				},
 				{
 					name: `Creador:`,
-					value: `**endercrack#4934**`,
+					value: `**endercrack**`,
 					inline: false
 				},
 				{
 					name: `Dessarrolladores:`,
-					value: `**__endercrack#4934__**`,
+					value: `**__endercrack#__**`,
 					inline: false
 				},
 				{
@@ -49,7 +49,7 @@ module.exports = {
 				},
 				{
 					name: '**Librerias:**',
-					value: `> Discord.js **v14.6.0** \n > MongoDB **6.7.3** `,
+					value: `> Discord.js **v14.6.0** \n > MongoDB **6.7.3** \n canvas **2.10.0**`,
 					inline: true
 				},
 				{

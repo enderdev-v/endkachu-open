@@ -34,7 +34,7 @@ module.exports = {
 					description:
 						'<:yeah:930915658030522428> Quieres invitarme? aqui tienes 2 opciones :D',
 					color: 0x3f7ede,
-				//	thumbnail: `${client.user.displayAvatarURL()}`
+			  	thumbnail: `${client.user.displayAvatarURL()}`
 				}
 			],
 			components: [row]

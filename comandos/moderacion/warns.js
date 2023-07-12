@@ -18,14 +18,8 @@ module.exports = {
 		if (data.warns.length == 0)
 			return message.reply(`el usuario no tiene warns`);
 
-		/*
-    let embed = new Discord.MessageEmbed()
-      `${user.user.tag} tiene ${data.warns.length} warns`)
-      `${data.warns.map((warn, index) => `--------------- \n ID: ${index} \n Fecha: <t:${Math.round(warn.fecha / 1000)}> \n autor @${warn.autor} \n razon: ${warn.razon}`)}`)
-      .setColor(`Red`)
-*/
+	
 		paginas(
-			client,
 			message,
 			'Red',
 			data.warns.map(

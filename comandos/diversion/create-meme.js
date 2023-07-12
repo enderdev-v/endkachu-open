@@ -1,7 +1,6 @@
 const { AttachmentBuilder } = require(`discord.js`); 
 const { registerFont } = require("canvas") 
- registerFont('./public/fonts/Roboto-Regular.ttf', { family: 'Roboto' })
-
+registerFont(`./public/fonts/OleoScript-Bold.ttf`, { family: `OleoScript` });
  module.exports = { 
    name: "create-meme", 
    alias: [],

@@ -9,18 +9,10 @@ module.exports = {
 
   async run(client, message, args) {
 
-    let usuario = message.mentions.members.first() || message.member;
-    let roles = usuario.roles.cache
-      .sort((a, b) => b.position - a.position)
-      .map(roles => roles.toString())
-      .slice(0, -1);
-
-
-    let banner = usuario.banner ? usuario.bannerURL() : usuario.hexAccentColor;
-    let name = usuario.user.discriminator = "0" ? usuario.user.username : usuario.user.tag;
-
-		//console.log(usuario.user.discriminator, "discriminador")
-
+    const usuario = message.mentions.members.first() || message.member,
+    roles = usuario.roles.cache.sort((a, b) => b.position - a.position).map(roles => roles.toString()).slice(0, -1),
+    banner = usuario.banner ? usuario.bannerURL() : usuario.hexAccentColor;
+    
     let displayRoles;
 
     displayRoles = roles.join(", ")
@@ -36,13 +28,13 @@ module.exports = {
       .addFields(
         {
           name: `Tag`,
-					value: `${name}`,
-          inline: false
+					value: `${usuario.user.name}`,
+          inline: true
         },
         {
           name: "Apodo",
           value: `${usuario.nickname || "no tiene ningun apodo"}`,
-          inline: false
+          inline: true
         },
         {
           name: "Id:",
@@ -52,12 +44,12 @@ module.exports = {
         {
           name: "Creacion de la cuenta:",
           value: `${usuario.user.createdAt.toLocaleDateString()}`,
-          inline: false
+          inline: true
         },
         {
           name: "Ingreso al servidor:",
           value: `${usuario.joinedAt.toLocaleDateString()}`,
-          inline: false
+          inline: true
         },
         {
           name: `Roles (${roles.length})`,
