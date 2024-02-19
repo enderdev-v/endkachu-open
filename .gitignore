@@ -1,7 +1,4 @@
+dist/
 node_modules
-.replit
-.upm
-.breakpoints
-.git
-replit.nix
-.config
+.env
+package-lock.json
